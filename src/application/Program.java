@@ -24,13 +24,14 @@ public class Program {
 			while (rs.next()) {
 				System.out.println(rs.getInt("Id") + ", " + rs.getString("Name"));
 			}
-			catch (SQLException e) {
-				e.printStackTrace();
-			}
-			finally {
-				DB.closeConnection();
-				
-			}
 		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}	
+		finally {
+			DB.closeResultSet(rs);
+			DB.closeStatement(st);
+			DB.closeConnection();
+		}		
 	}
 }
